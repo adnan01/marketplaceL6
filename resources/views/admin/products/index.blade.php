@@ -8,7 +8,7 @@
             <th>#</th>
             <th>Nome</th>
             <th>Preço</th>
-            <th>Loja</th>
+            <!--<th>Loja</th>-->
             <th>Ações</th>
         </tr>
     </thead>
@@ -18,7 +18,7 @@
             <td>{{$p->id}}</td>
                 <td>{{$p->name}}</td>
                 <td>R${{number_format($p->price, 2, ',','.')}}</td>
-                <td>{{$p->stores->name}}</td>
+                <!--<td>$p->stores->name}}</td>-->
 
 
             <td>
