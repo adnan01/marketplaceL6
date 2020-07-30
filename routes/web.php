@@ -14,7 +14,7 @@
 Route::get('/', function () {
     $helloWorld = 'hello world';
     return view('welcome',compact('helloWorld'));
-});
+})->name('home');
 Route::get('/model',function(){
     //$products=\App\Product::all();//select * from products
     //$user = new \App\User();
@@ -105,7 +105,10 @@ Route::get('/model',function(){
 
     return $product->categories;
 });
-Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function()
+
+Route::group(['middleware'=>['auth']], function()
+{
+    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function()
     {
        /* Route::prefix('stores')->name('stores.')->group(function()
             {
@@ -119,6 +122,10 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function()
         );*/
         Route::resource('stores','StoreController');
         Route::resource('products','ProductController');
-    }
-);
+    });
+});
 
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
