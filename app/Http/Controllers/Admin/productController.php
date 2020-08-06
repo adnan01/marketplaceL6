@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Http\Requests\ProductRequest;
 class productController extends Controller
 {
     private $product;
@@ -41,7 +42,7 @@ class productController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $data = $request->all();
         $store = \App\Store::find($data['store']);
@@ -81,7 +82,7 @@ class productController extends Controller
      * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $product)
+    public function update(ProductRequest $request, $product)
     {
         $data = $request->all();
         $product=$this->product->find($product);
